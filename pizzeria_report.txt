@@ -1,0 +1,14 @@
+My first thought approaching this was to use a brute force bfs starting from the given the co-ordinate and expanding from that based off the value of "r" using the Euclidean distance formula
+
+The orginal idea was to do bfs search for each of the given pizzerias and keep a global 2d array to keep track of the no.of pizzerias that deliver to a certain co-ordinate then return the max value from the array
+E.g. array[x][y]=number of pizzerias that deliver.But this kept track of every co_ordinate (it was of size 'n by n')
+
+I revisited the problem and saw that search space for the bfs was a (2r x 2r) grid.
+With this, a new bfs method was created where it would search through the positions in the (2r x 2r) grid at most which would always be less than searching through the entire grid (n x n) using nested loops from (x-r to x+ r+1) vertically and (y-r to y+r+1) horizontally ,eliminating the need of a queue and a list of places that have already been visited, and update a global dictionary that kept track of the locations that can be delivered pizzas and the number of pizzerias that woud do so: 
+E.g. dictionary[co_ordinates]=number of pizzerias
+
+The time complexity of this O(mn) where 'm' is the number of pizzerias and 'n' is the grid size,since for every pizzeria, the solution searches through a grid space of size (2r): O(m * (n-(2r-n)) but r is a constant.
+
+
+
+
